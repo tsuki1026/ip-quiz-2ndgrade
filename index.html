@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>知財2級 一問一答クイズ</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== トップ画面 ===== -->
+  <div id="screen-top" class="screen active">
+    <div class="container top-container">
+      <h1>📚 知財2級 一問一答クイズ</h1>
+      <p class="subtitle">全115問 ― 知的財産権法を楽しく復習</p>
+
+      <section class="category-section">
+        <h2>出題カテゴリーを選ぶ</h2>
+        <div class="category-grid" id="category-buttons"></div>
+      </section>
+
+      <section class="mode-section">
+        <h2>出題モード</h2>
+        <div class="mode-options">
+          <label class="radio-label">
+            <input type="radio" name="mode" value="sequential" checked />
+            <span>順番に解く</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="mode" value="random" />
+            <span>ランダム</span>
+          </label>
+        </div>
+      </section>
+
+      <section class="count-section">
+        <h2>出題数</h2>
+        <div class="count-options">
+          <label class="radio-label">
+            <input type="radio" name="count" value="10" checked />
+            <span>10問</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="count" value="20" />
+            <span>20問</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="count" value="all" />
+            <span>全問</span>
+          </label>
+        </div>
+      </section>
+
+      <button class="btn btn-start" id="btn-start">クイズを開始する</button>
+    </div>
+  </div>
+
+  <!-- ===== クイズ画面 ===== -->
+  <div id="screen-quiz" class="screen">
+    <div class="container quiz-container">
+      <div class="quiz-header">
+        <div class="progress-info">
+          <span id="progress-text">1 / 10</span>
+          <span id="category-badge" class="badge"></span>
+          <button class="btn-abort" id="btn-abort" title="中断してトップへ">✕ 中断</button>
+        </div>
+        <div class="progress-bar-wrap">
+          <div id="progress-bar" class="progress-bar"></div>
+        </div>
+        <div class="score-display">正解: <span id="score-count">0</span></div>
+      </div>
+
+      <div class="question-card">
+        <p id="question-title" class="question-title"></p>
+        <p id="question-text" class="question-text"></p>
+        <ul id="options-list" class="options-list"></ul>
+      </div>
+
+      <div id="explanation-box" class="explanation-box hidden">
+        <p id="result-label" class="result-label"></p>
+        <div id="explanation-text" class="explanation-text"></div>
+        <button class="btn btn-next" id="btn-next">次の問題へ →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 結果画面 ===== -->
+  <div id="screen-result" class="screen">
+    <div class="container result-container">
+      <h2>クイズ終了！</h2>
+      <div class="result-score-wrap">
+        <div class="result-score">
+          <span id="final-score">0</span>
+          <span class="slash"> / </span>
+          <span id="final-total">0</span>
+        </div>
+        <div id="result-rank" class="result-rank"></div>
+      </div>
+      <div id="result-breakdown" class="result-breakdown"></div>
+
+      <div class="result-actions">
+        <button class="btn btn-review" id="btn-review">間違えた問題を復習</button>
+        <button class="btn btn-top" id="btn-top">トップへ戻る</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 復習画面 ===== -->
+  <div id="screen-review" class="screen">
+    <div class="container review-container">
+      <div class="quiz-header">
+        <div class="progress-info">
+          <span id="review-progress-text">1 / 0</span>
+          <span class="badge badge-review">復習</span>
+          <button class="btn-abort" id="btn-review-abort" title="中断してトップへ">✕ 中断</button>
+        </div>
+        <div class="progress-bar-wrap">
+          <div id="review-progress-bar" class="progress-bar"></div>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <p id="review-title" class="question-title"></p>
+        <p id="review-text" class="question-text"></p>
+        <ul id="review-options" class="options-list"></ul>
+      </div>
+
+      <div id="review-explanation-box" class="explanation-box hidden">
+        <p id="review-result-label" class="result-label"></p>
+        <div id="review-explanation-text" class="explanation-text"></div>
+        <button class="btn btn-next" id="btn-review-next">次へ →</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="data/questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
